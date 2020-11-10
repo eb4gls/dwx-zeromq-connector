@@ -39,8 +39,8 @@ extern bool DMA_MODE = true;
 extern string t1 = "--- ZeroMQ Configuration ---";
 extern bool Publish_MarketData = false;
 
-string Publish_Symbols[7] = {
-   "EURUSD","GBPUSD","USDJPY","USDCAD","AUDUSD","NZDUSD","USDCHF"
+string Publish_Symbols[15] = {
+	"EURAUD","EURCAD","EURCHF","EURGBP","EURJPY","GBPJPY","EURNOK","EURNZD","EURTRY","EURUSD","GBPUSD","GBPAUD","GBPCAD","GBPCHF","GBPNZD"
 };
 
 /*
@@ -440,7 +440,7 @@ string GetBidAsk(string symbol) {
     
    if(SymbolInfoTick(symbol,last_tick))
    {
-       return(StringFormat("%f;%f", last_tick.bid, last_tick.ask));
+       return(StringFormat("%f;%f;%u;%s", last_tick.bid, last_tick.ask, last_tick.volume, TimeToStr(last_tick.time,TIME_DATE|TIME_SECONDS)));
    }
    
    // Default
